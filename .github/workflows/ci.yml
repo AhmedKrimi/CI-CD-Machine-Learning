@@ -13,7 +13,7 @@ permissions: write-all
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: docker://iterative/cml:0
+    container: docker://iterativeai/cml:0-dvc1-base0
     steps:
       - uses: actions/checkout@v4
       - uses: iterative/setup-cml@v2
