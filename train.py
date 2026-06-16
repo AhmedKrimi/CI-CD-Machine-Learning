@@ -56,6 +56,7 @@ with open("Results/metrics.txt", "w") as outfile:
 
 cm = confusion_matrix(y_test, predictions, labels=pipe.classes_)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=pipe.classes_)
+disp.plot()
 plt.savefig("Results/model_results.png", dpi=120)
 # Saving the model
 sio.dump(pipe, "Model/drug_pipeline.skops")
