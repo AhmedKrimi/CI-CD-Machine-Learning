@@ -13,6 +13,9 @@ jobs:
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
       - uses: iterative/setup-cml@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
