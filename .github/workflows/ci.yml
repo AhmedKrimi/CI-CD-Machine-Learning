@@ -16,6 +16,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - uses: iterative/setup-cml@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
