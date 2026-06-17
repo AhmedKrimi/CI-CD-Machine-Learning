@@ -18,7 +18,9 @@ drug_df.head(3)
 X = drug_df.drop("Drug", axis=1).values
 y = drug_df.Drug.values
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=91)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=91
+)
 
 # Creating the pipelines
 cat_col = [1, 2, 3]
@@ -29,7 +31,7 @@ transform = ColumnTransformer(
     [
         ("encoder", OrdinalEncoder(), cat_col),
         ("num_imputer", SimpleImputer(strategy="median"), num_col),
-        ("num_scaler", StandardScaler(), num_col)
+        ("num_scaler", StandardScaler(), num_col),
     ]
 )
 
@@ -37,7 +39,7 @@ transform = ColumnTransformer(
 pipe = Pipeline(
     steps=[
         ("prerpocessing", transform),
-        ("model", RandomForestClassifier(n_estimators=80, random_state=12))
+        ("model", RandomForestClassifier(n_estimators=80, random_state=12)),
     ]
 )
 
@@ -46,7 +48,7 @@ pipe.fit(X_train, y_train)
 # Model Evaluation
 predictions = pipe.predict(X_test)
 accuracy = accuracy_score(y_test, predictions)
-f1 = f1_score(y_test, predictions, average= "macro")
+f1 = f1_score(y_test, predictions, average="macro")
 
 print(f"Accuracy:, {accuracy*100}%, F1 score: {f1}")
 
